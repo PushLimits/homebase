@@ -7,10 +7,12 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@icons/*": ["src/components/icons/*"],
-      "@images/*": ["src/images/*"],
+      "@assets/*": ["src/assets/*"],
+      "@data/*": ["src/data/*"],
       "@layouts/*": ["/src/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["/src/styles/*"]
-    }
+    },
+    "strictNullChecks": true
   }
 }
