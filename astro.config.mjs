@@ -4,6 +4,8 @@ import tailwindcss from "@tailwindcss/vite"
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://pushlimits.github.io",
+  base: "/homebase",
   vite: {
     plugins: [tailwindcss()],
     resolve: {
