@@ -1,0 +1,73 @@
+---
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import Timeline from "@components/shared/Timeline.astro";
+import Cards from "@components/shared/UserDetails.astro";
+import GithubIcon from "@icons/GithubIcon.astro";
+
+import { timelineEntries } from "@data/timeline";
+---
+
+<BaseLayout>
+  <main class="mx-3">
+    <div class="flex items-center justify-center overflow-hidden pt-12">
+      <div class="flex max-w-6xl flex-col items-start gap-2 md:flex-row">
+        <div class="text-secondary clamp-[text,sm,xl] text-center leading-relaxed tracking-wider md:w-2xl md:text-left">
+          <div class="sclamp-[text,base,2xl] mb-3">
+            Hi, I'm <span class="font-extrabold">Joe Manuola</span>.
+          </div>
+          I am an accomplished technology leader with experience architecting and delivering scalable web applications for
+          global organizations. I translate complex business needs into real technical strategies and modernize products
+          through cloud infrastructure and optimized software development.
+
+          <section class="not-prose flex flex-wrap">
+            <ul class="mt-5 flex flex-col gap-y-1">
+              <li class="flex items-center gap-x-2.5">
+                <GithubIcon />
+                <a
+                  class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                  href="mailto:joemanuola@gmail.com"
+                >
+                  joemanuola@gmail.com
+                </a>
+              </li>
+
+              <li class="flex items-center gap-x-2.5">
+                <GithubIcon />
+                <a
+                  class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                  href="https://linkedin.com/in/joemanuola"
+                >
+                  in/joemanuola
+                </a>
+              </li>
+
+              <li class="flex items-center gap-x-2.5">
+                <GithubIcon />
+                <a
+                  class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                  href="https://github.com/PushLimits"
+                >
+                  PushLimits
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div class="flex w-full justify-center md:w-1/2">
+          <Cards />
+        </div>
+      </div>
+    </div>
+
+    <div class="clamp-[text,4xl,5xl] text-primary mt-12 mb-6 text-center font-extrabold">
+      What have I been working on all this time...
+    </div>
+    <div class="flex flex-wrap justify-center">
+      <div
+        class="bg-base-100 relative flex min-h-[6rem] max-w-4xl min-w-[18rem] flex-wrap items-center justify-center gap-2 overflow-x-hidden bg-cover bg-top p-4 xl:py-10"
+      >
+        <Timeline entries={timelineEntries} />
+      </div>
+    </div>
+  </main>
+</BaseLayout>
