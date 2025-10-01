@@ -48,7 +48,7 @@ export const timelineEntries: TimelineEntry[] = [
     description: `Managed the software development of 10+ e-commerce websites selling luxury
       home products with $100M+ in annual revenue.  Led efforts to implement a sitewide faceted-search
       and product discount system.`,
-    badges: ["E‑commerce", ".NET", "MSSQL", "Faceted-Search", "On-Premise Infrastruture"]
+    badges: ["E‑commerce", ".NET", "MSSQL", "Faceted-Search", "On-Premise Infrastructure"]
   },
   {
     align: "start",
@@ -80,6 +80,6 @@ export const timelineEntries: TimelineEntry[] = [
     description: `Achieved a B.S. in Management Science and Information Systems while
       working as a technology intern with Johnson & Johnson.  Active member of the Theta Chi
       Fraternity and various academic clubs.`,
-    badges: ["Management Information Systems", "Technology Intership", "Academics"]
+    badges: ["Management Information Systems", "Technology Internship", "Academics"]
   }
 ];

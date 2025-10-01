@@ -9,9 +9,9 @@
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
       "@icons/*": ["src/components/icons/*"],
-      "@layouts/*": ["/src/layouts/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
-      "@styles/*": ["/src/styles/*"]
+      "@styles/*": ["src/styles/*"]
     },
     "strictNullChecks": true
   }
