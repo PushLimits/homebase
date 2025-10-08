@@ -5,7 +5,7 @@ export type NavigationItem = {
 };
 
 export const navigationItems: NavigationItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Blog", href: "/blog", matchPrefix: true },
-  { label: "About", href: "/about" }
+  { label: "Home", href: "/" }
+  // { label: "Blog", href: "/blog", matchPrefix: true },
+  // { label: "About", href: "/about" }
 ];
