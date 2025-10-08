@@ -8,7 +8,6 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.manuola.com",
-  base: "/homebase",
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
