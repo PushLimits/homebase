@@ -26,9 +26,6 @@ jobs:
         with:
           package-manager: pnpm@latest
 
-      - name: Add .nojekyll
-        run: touch dist/.nojekyll
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
