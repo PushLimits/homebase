@@ -1,22 +1,27 @@
 // @ts-check
-import { defineConfig } from "astro/config"
-import tailwindcss from "@tailwindcss/vite"
+
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://pushlimits.github.io",
+  site: "https://www.manuola.com",
   base: "/homebase",
+  integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@components": "/src/components",
         "@icons": "/src/components/icons",
-        "@images": "/src/images",
+        "@assets": "/src/assets",
+        "@data": "/src/data",
         "@layouts": "/src/layouts",
         "@pages": "/src/pages",
         "@styles": "/src/styles"
       }
     }
   }
-})
+});

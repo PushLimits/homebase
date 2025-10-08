@@ -1,16 +1,55 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GithubIcon from "@icons/GithubIcon.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="PushLimits">
+  <main>
+    <div class="flex flex-wrap justify-center">
+      <div class="prose mx-4 mt-4">
+        <div class="clamp-[text,xl,6xl] leading-none font-extrabold tracking-tight">Joseph Manuola</div>
+        <div class="mb-6 text-gray-500 italic">"Push Limits"</div>
+        <section class="m-0">
+          An accomplished technology leader with extensive experience architecting and delivering scalable web
+          applications for global organizations. Expert in translating complex business needs into effective technical
+          strategies and modernizing products through resilient cloud infrastructure and optimized engineering
+          processes. A proven mentor and leader of cross-functional agile teams, dedicated to delivering innovative
+          solutions that generate measurable results.
+        </section>
+        <section class="not-prose flex flex-wrap">
+          <ul class="mt-5 flex flex-col gap-y-1">
+            <li class="flex items-center gap-x-2.5">
+              <GithubIcon />
+              <a
+                class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                href="mailto:joemanuola@gmail.com"
+              >
+                joemanuola@gmail.com
+              </a>
+            </li>
+
+            <li class="flex items-center gap-x-2.5">
+              <GithubIcon />
+              <a
+                class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                href="https://linkedin.com/in/joemanuola"
+              >
+                in/joemanuola
+              </a>
+            </li>
+
+            <li class="flex items-center gap-x-2.5">
+              <GithubIcon />
+              <a
+                class="text-[13px] text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:decoration-2 focus:outline-hidden dark:text-neutral-500 dark:hover:text-neutral-400"
+                href="https://github.com/PushLimits"
+              >
+                PushLimits
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
