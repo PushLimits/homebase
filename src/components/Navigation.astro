@@ -33,8 +33,9 @@ const isLinkActive = (item: NavigationItem) => {
 };
 
 // Styling helpers
-const baseLinkClasses = "px-4 py-0.5 text-gray-500 focus:outline-hidden md:px-1 md:py-3 dark:text-neutral-400";
-const activeLinkClasses = "text-primary font-extrabold dark:text-neutral-200";
+const baseLinkClasses =
+  "relative z-10 rounded-full px-4 py-1.5 text-sm font-medium text-gray-500 transition-colors duration-200 focus:outline-hidden md:px-3 md:py-2 dark:text-neutral-400";
+const activeLinkClasses = "text-gray-900 dark:text-neutral-100";
 const inactiveLinkClasses = "hover:text-gray-800 dark:hover:text-neutral-200";
 
 const linkClasses = (isActive: boolean) => `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`;
@@ -76,14 +77,29 @@ const linkClasses = (isActive: boolean) => `${baseLinkClasses} ${isActive ? acti
 
     <div id="mobile-nav-menu" class="hidden grow basis-full overflow-hidden transition-all duration-300 md:block">
       <div
-        class="mt-3 flex flex-col gap-2 py-2 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-3 md:py-0 md:ps-7"
+        class="relative mt-3 flex flex-col gap-2 py-2 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-2 md:py-0 md:ps-7"
+        data-nav-container
       >
+        <span
+          class="pointer-events-none absolute top-0 left-0 hidden h-9 w-0 rounded-full bg-gray-100 opacity-0 transition-all duration-300 ease-out md:block dark:bg-neutral-800"
+          data-active-pill
+          aria-hidden="true"></span>
         {
-          items.map((item) => (
-            <a href={item.href} class={linkClasses(isLinkActive(item))}>
-              {item.label}
-            </a>
-          ))
+          items.map((item) => {
+            const isActive = isLinkActive(item);
+
+            return (
+              <a
+                href={item.href}
+                class={linkClasses(isActive)}
+                aria-current={isActive ? "page" : undefined}
+                data-active={isActive ? "true" : undefined}
+                data-nav-link
+              >
+                {item.label}
+              </a>
+            );
+          })
         }
       </div>
     </div>
@@ -114,6 +130,98 @@ const linkClasses = (isActive: boolean) => `${baseLinkClasses} ${isActive ? acti
 
       toggleButton.setAttribute("aria-expanded", String(isExpanded));
       toggleIcons(isExpanded);
+    });
+
+    const navContainer = document.querySelector("[data-nav-container]");
+    const pill = navContainer?.querySelector("[data-active-pill]");
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+    const matchesDesktop = () => desktopQuery.matches;
+
+    if (!navContainer || !pill) return;
+
+    const links = Array.from(navContainer.querySelectorAll("[data-nav-link]"));
+
+    if (!links.length) return;
+
+    let currentActive = links.find((link) => link.dataset.active === "true") ?? null;
+
+    const positionPill = (target, { animate = true } = {}) => {
+      if (!target || !matchesDesktop()) {
+        pill.style.opacity = "0";
+        return;
+      }
+
+      if (!navContainer.isConnected) return;
+
+      const linkRect = target.getBoundingClientRect();
+      const containerRect = navContainer.getBoundingClientRect();
+      const left = linkRect.left - containerRect.left + navContainer.scrollLeft;
+      const top = linkRect.top - containerRect.top + navContainer.scrollTop;
+
+      if (!animate) {
+        pill.classList.add("transition-none");
+      }
+
+      pill.style.opacity = "1";
+      pill.style.transform = `translate(${left}px, ${top}px)`;
+      pill.style.width = `${linkRect.width}px`;
+      pill.style.height = `${linkRect.height}px`;
+
+      if (!animate) {
+        requestAnimationFrame(() => {
+          pill.classList.remove("transition-none");
+        });
+      }
+    };
+
+    if (currentActive) {
+      positionPill(currentActive, { animate: false });
+    }
+
+    const handleResize = () => {
+      if (!matchesDesktop()) {
+        pill.style.opacity = "0";
+        return;
+      }
+
+      if (currentActive) {
+        positionPill(currentActive, { animate: false });
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    const handleMediaChange = (event) => {
+      if (event.matches) {
+        if (currentActive) {
+          positionPill(currentActive, { animate: false });
+        }
+      } else {
+        pill.style.opacity = "0";
+      }
+    };
+
+    if ("addEventListener" in desktopQuery) {
+      desktopQuery.addEventListener("change", handleMediaChange);
+    } else {
+      desktopQuery.addListener(handleMediaChange);
+    }
+
+    if (typeof ResizeObserver === "function") {
+      const resizeObserver = new ResizeObserver(() => {
+        if (matchesDesktop() && currentActive) {
+          positionPill(currentActive, { animate: false });
+        }
+      });
+
+      resizeObserver.observe(navContainer);
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        currentActive = link;
+        positionPill(link);
+      });
     });
   });
 </script>
