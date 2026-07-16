@@ -1,0 +1,19 @@
+---
+const { size = 24, title = "Email", class: className, ...attrs } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  role="img"
+  aria-hidden={title ? "false" : "true"}
+  class={className}
+  fill="currentColor"
+  {...attrs}
+>
+  {title && <title>{title}</title>}
+  <path
+    d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 5.931-8-5.931V6h16zm0 12H4V8.489l8 5.931 8-5.931V18z"
+  ></path>
+</svg>
