@@ -73,15 +73,5 @@ export const timelineEntries: TimelineEntry[] = [
       Utilized Microsoft tech stack (ASP/Visual Basic/MTS) with XML and MSMQ to 
       facilitate communication between various business objects.`,
     badges: ["ASP", "Visual Basic", "MTS", "XML", "MSMQ"]
-  },
-  {
-    align: "start",
-    year: "1993 ... 1997",
-    title: "Full-Time Student",
-    subtitle: "Rutgers University | New Brunswick, NJ",
-    description: `Achieved a B.S. in Management Science and Information Systems while
-      working as a technology intern with Johnson & Johnson.  Active member of the Theta Chi
-      Fraternity and various academic clubs.`,
-    badges: ["Management Information Systems", "Technology Internship", "Academics"]
   }
 ];
