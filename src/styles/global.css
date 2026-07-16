@@ -7,3 +7,14 @@
 @plugin "daisyui" {
   themes: corporate --default;
 }
+
+/* Override DaisyUI corporate theme with burnt red / terracotta tones */
+:root,
+[data-theme="corporate"] {
+  --color-primary: oklch(50% 0.16 28);
+  --color-primary-content: oklch(97% 0.01 28);
+  --color-secondary: oklch(44% 0.10 38);
+  --color-secondary-content: oklch(97% 0.01 38);
+  --color-info: oklch(50% 0.16 28);
+  --color-info-content: oklch(97% 0.01 28);
+}

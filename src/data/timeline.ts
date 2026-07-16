@@ -10,13 +10,15 @@ export type TimelineEntry = {
 export const timelineEntries: TimelineEntry[] = [
   {
     align: "start",
-    year: "2025 ... ?",
-    title: "Searching for 'What's Next'",
-    description: `While searching for my next opportunity, I am engaged in self-directed
-      study of generative AI and its practical applications. My objective is to leverage
-      these skills and knowledge to drive innovation and deliver value in a new leadership
-      role.`,
-    badges: ["Generative AI", "Python"]
+    year: "2026 ... ?",
+    title: "Senior IT Manager",
+    subtitle: "TD Bank | Mount Laurel, NJ",
+    description: `Led technology governance and engineering for 30+ banking 
+    applications, overseeing a team of multiple technologists and delivering secure,
+    scalable solutions. Drove modernization, AI adoption, and major technology
+    initiatives while ensuring compliance, managing risk, and mentoring 
+    engineering leaders.`,
+    badges: ["Leadership", "Generative AI", "Technology Ownership", "Python", "Azure"]
   },
   {
     align: "end",
